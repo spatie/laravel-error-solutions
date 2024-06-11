@@ -2,9 +2,9 @@
 
 namespace Spatie\LaravelErrorSolutions;
 
+use Spatie\LaravelErrorSolutions\Commands\LaravelErrorSolutionsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelErrorSolutions\Commands\LaravelErrorSolutionsCommand;
 
 class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
 {
