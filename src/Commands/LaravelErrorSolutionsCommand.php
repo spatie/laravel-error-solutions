@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Spatie\LaravelErrorSolutions\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelErrorSolutionsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-error-solutions';
 
     public $description = 'My command';
 
