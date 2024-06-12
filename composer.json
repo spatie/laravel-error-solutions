@@ -4,7 +4,10 @@
     "keywords": [
         "Spatie",
         "laravel",
-        "laravel-error-solutions"
+        "flare",
+        "errors",
+        "laravel-error-solutions",
+        "dev"
     ],
     "homepage": "https://github.com/spatie/laravel-error-solutions",
     "license": "MIT",
@@ -18,7 +21,7 @@
     "require": {
         "php": "^8.2",
         "illuminate/contracts": "^10.0||^11.0",
-        "spatie/error-solutions": "^0.0.1",
+        "spatie/error-solutions": "dev-main",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
@@ -75,10 +78,7 @@
         "laravel": {
             "providers": [
                 "Spatie\\LaravelErrorSolutions\\LaravelErrorSolutionsServiceProvider"
-            ],
-            "aliases": {
-                "LaravelErrorSolutions": "Spatie\\LaravelErrorSolutions\\Facades\\LaravelErrorSolutions"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
