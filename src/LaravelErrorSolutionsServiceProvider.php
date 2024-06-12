@@ -15,21 +15,21 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
 {
     public function registeringPackage()
     {
-       app()->bind(Renderer::class, function() {
-           $errorRenderer = new HtmlErrorRenderer(
-               $this->app['config']->get('app.debug'),
-           );
+        app()->bind(Renderer::class, function () {
+            $errorRenderer = new HtmlErrorRenderer(
+                $this->app['config']->get('app.debug'),
+            );
 
-           return new SpatieRenderer(
-               $this->app->make(Factory::class),
-               $this->app->make(Listener::class),
-               $errorRenderer,
-               $this->app->make(BladeMapper::class),
-               $this->app->basePath(),
-           );
-       });
+            return new SpatieRenderer(
+                $this->app->make(Factory::class),
+                $this->app->make(Listener::class),
+                $errorRenderer,
+                $this->app->make(BladeMapper::class),
+                $this->app->basePath(),
+            );
+        });
 
-       View::prependNamespace('laravel-exceptions-renderer', [__DIR__.'/../resources/views']);
+        View::prependNamespace('laravel-exceptions-renderer', [__DIR__.'/../resources/views']);
     }
 
     public function configurePackage(Package $package): void

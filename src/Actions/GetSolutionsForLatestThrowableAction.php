@@ -2,7 +2,6 @@
 
 namespace Spatie\LaravelErrorSolutions\Actions;
 
-use Illuminate\Foundation\Exceptions\Renderer\Exception;
 use Spatie\ErrorSolutions\DiscoverSolutionProviders;
 use Spatie\ErrorSolutions\SolutionProviderRepository;
 use Spatie\LaravelErrorSolutions\SpatieRenderer;
