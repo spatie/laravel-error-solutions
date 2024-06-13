@@ -7,8 +7,6 @@ class RunnableSolutionsGuard
     /**
      * Check if runnable solutions are allowed based on the current
      * environment and config.
-     *
-     * @return bool
      */
     public static function check(): bool
     {
