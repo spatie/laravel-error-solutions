@@ -13,21 +13,32 @@
         <div>{{ $solution->getSolutionDescription() }}</div>
 
         @if(count($solution->getDocumentationLinks()))
+            <h3>Read more</h3>
             <ul>
-                @foreach($solution->getDocumentationLinks() as $documentationLink)
-                    <li><a href="{{ $documentationLink->url }}">{{ $documentationLink->title }}</a></li>
+                @foreach($solution->getDocumentationLinks() as $label => $url)
+
+                    <li><a href="{{ $url }}">{{ $label }}</a></li>
                 @endforeach
             </ul>
         @endif
 
         @if(config('error-solutions.enable_runnable_solutions'))
             @if($solution instanceof \Spatie\ErrorSolutions\Contracts\RunnableSolution)
-                <div>
-                    {{ $solution->getSolutionDescription() }}
-                </div>
+                <div x-data="{solutionExecuted: false}">
+                    <div>
+                        {{ $solution->getSolutionActionDescription() }}
+                    </div>
 
-                <div>
-                    {{ $solution->getRunButtonText() }}
+
+                        <div x-show="! solutionExecuted">
+                            <button @click="solutionExecuted = true">
+                                {{ $solution->getRunButtonText() }}
+                            </button>
+                        </div>
+
+                        <div x-show="solutionExecuted">
+                            The solution was executed...
+                        </div>
                 </div>
             @endif
         @endif
