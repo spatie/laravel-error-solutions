@@ -24,21 +24,32 @@
 
         @if(config('error-solutions.enable_runnable_solutions'))
             @if($solution instanceof \Spatie\ErrorSolutions\Contracts\RunnableSolution)
-                <div x-data="{solutionExecuted: false}">
+                <div x-data="{
+                    solutionExecuted: false,
+                    formValues: {
+                       solution: '{{ $solution::class }}'
+                    },
+                    submitForm() {
+                        fetch('/run-solution', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+
+                }">
                     <div>
                         {{ $solution->getSolutionActionDescription() }}
                     </div>
 
 
-                        <div x-show="! solutionExecuted">
-                            <button @click="solutionExecuted = true">
-                                {{ $solution->getRunButtonText() }}
-                            </button>
-                        </div>
+                    <div x-show="! solutionExecuted">
+                        <button @click="solutionExecuted = true">
+                            {{ $solution->getRunButtonText() }}
+                        </button>
+                    </div>
 
-                        <div x-show="solutionExecuted">
-                            The solution was executed...
-                        </div>
+                    <div x-show="solutionExecuted">
+                        The solution was executed...
+                    </div>
                 </div>
             @endif
         @endif
