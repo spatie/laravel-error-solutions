@@ -9,6 +9,9 @@ use Spatie\LaravelErrorSolutions\SpatieRenderer;
 
 class GetSolutionsForLatestThrowableAction
 {
+    /**
+     * @return array<\Spatie\ErrorSolutions\Contracts\Solution>
+     */
     public function execute(): array
     {
         $solutionProviders = DiscoverSolutionProviders::for(['php', 'laravel']);
@@ -17,8 +20,6 @@ class GetSolutionsForLatestThrowableAction
 
         $throwable = SpatieRenderer::$latestThrowable;
 
-        $solutions = $providerRepository->getSolutionsForThrowable($throwable);
-
-        dd($solutions);
+        return $providerRepository->getSolutionsForThrowable($throwable);
     }
 }
