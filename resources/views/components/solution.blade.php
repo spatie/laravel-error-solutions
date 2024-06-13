@@ -19,6 +19,18 @@
                 @endforeach
             </ul>
         @endif
+
+        @if(config('error-solutions.enable_runnable_solutions'))
+            @if($solution instanceof \Spatie\ErrorSolutions\Contracts\RunnableSolution)
+                <div>
+                    {{ $solution->getSolutionDescription() }}
+                </div>
+
+                <div>
+                    {{ $solution->getRunButtonText() }}
+                </div>
+            @endif
+        @endif
     @endforeach
 
     <div>

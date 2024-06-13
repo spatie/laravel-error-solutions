@@ -9,7 +9,7 @@ use Spatie\LaravelErrorSolutions\SpatieRenderer;
 class GetSolutionsForLatestThrowableAction
 {
     /**
-     * @return array<\Spatie\ErrorSolutions\Contracts\Solution>
+     * @return array<\Spatie\ErrorSolutions\Contracts\Solution|\Spatie\ErrorSolutions\Contracts\RunnableSolution>
      */
     public function execute(): array
     {
