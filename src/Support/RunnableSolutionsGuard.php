@@ -1,20 +1,14 @@
 <?php
 
-namespace Spatie\LaravelErrorSolutions;
+namespace Spatie\LaravelErrorSolutions\Support;
+
+use Spatie\LaravelErrorSolutions\Exceptions\CannotExecuteSolutionForNonLocalIp;
 
 class RunnableSolutionsGuard
 {
-    /**
-     * Check if runnable solutions are allowed based on the current
-     * environment and config.
-     *
-     * @return bool
-     */
     public static function check(): bool
     {
         if (! config('app.debug')) {
-            // Never run solutions in when debug mode is not enabled.
-
             return false;
         }
 
@@ -22,13 +16,25 @@ class RunnableSolutionsGuard
             return true;
         }
 
-        if (! app()->environment('local') && ! app()->environment('development')) {
-            // Never run solutions on non-local environments. This avoids exposing
-            // applications that are somehow APP_ENV=production with APP_DEBUG=true.
+        return config('app.debug');
+    }
 
+    public function ensureLocalRequest(): self
+    {
+        if (! app()->environment('local') && ! app()->environment('development')) {
             return false;
         }
 
-        return config('app.debug');
+        $ipIsPublic = filter_var(
+            request()->ip(),
+            FILTER_VALIDATE_IP,
+            FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+        );
+
+        if ($ipIsPublic) {
+            throw CannotExecuteSolutionForNonLocalIp::make();
+        }
+
+        return $this;
     }
 }
