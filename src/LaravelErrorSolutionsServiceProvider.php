@@ -32,7 +32,7 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
             Route::post('__execute-laravel-error-solution', ExecuteSolutionController::class)->name('execute-laravel-error-solution');
         }
 
-        app()->bind(SolutionProviderRepositoryContract::class, function() {
+        app()->bind(SolutionProviderRepositoryContract::class, function () {
             $solutionProviders = DiscoverSolutionProviders::for(['php', 'laravel']);
 
             return new SolutionProviderRepository($solutionProviders);
@@ -54,6 +54,4 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
 
         View::prependNamespace('laravel-exceptions-renderer', [__DIR__.'/../resources/views']);
     }
-
-
 }

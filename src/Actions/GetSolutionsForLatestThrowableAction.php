@@ -9,8 +9,7 @@ class GetSolutionsForLatestThrowableAction
 {
     public function __construct(
         protected SolutionProviderRepository $solutionProviderRepository
-    )
-    {
+    ) {
     }
 
     /**
