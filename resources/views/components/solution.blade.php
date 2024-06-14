@@ -1,7 +1,5 @@
 @php
-
-    $solutions = app(\Spatie\LaravelErrorSolutions\Actions\GetSolutionsForLatestThrowableAction::class)->execute($exception);
-
+    $solutions = app(\Spatie\LaravelErrorSolutions\Actions\GetSolutionsForLatestThrowableAction::class)->execute();
 @endphp
 
 @if(count($solutions))
@@ -45,7 +43,6 @@
                         {{ $solution->getSolutionActionDescription() }}
                     </div>
 
-
                     <div x-show="! solutionExecuted">
                         <button @click="submitForm()">
                             {{ $solution->getRunButtonText() }}
@@ -54,6 +51,10 @@
 
                     <div x-show="solutionExecuted">
                         The solution was executed...
+
+                        <div @click="location.reload()">
+                            Refresh page
+                        </div>
                     </div>
                 </div>
             @endif

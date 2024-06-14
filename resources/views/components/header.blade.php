@@ -23,5 +23,5 @@
             </div>
         </div>
     </div>
-    <x-laravel-exceptions-renderer::solution :$exception />
+    <x-laravel-exceptions-renderer::solution />
 </x-laravel-exceptions-renderer::card>
