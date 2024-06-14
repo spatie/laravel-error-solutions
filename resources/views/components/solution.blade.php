@@ -26,15 +26,20 @@
             @if($solution instanceof \Spatie\ErrorSolutions\Contracts\RunnableSolution)
                 <div x-data="{
                     solutionExecuted: false,
-                    formValues: {
-                       solution: '{{ $solution::class }}'
-                    },
                     submitForm() {
-                        fetch('/run-solution', {
+                        this.solutionExecuted = true;
+
+                        fetch('{{ route('execute-laravel-error-solution') }}', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
-
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            body: JSON.stringify({!! Js::from([
+                                 'solution' => $solution::class
+                             ]) !!})
+                        });
+                    }
                 }">
                     <div>
                         {{ $solution->getSolutionActionDescription() }}
@@ -42,7 +47,7 @@
 
 
                     <div x-show="! solutionExecuted">
-                        <button @click="solutionExecuted = true">
+                        <button @click="submitForm()">
                             {{ $solution->getRunButtonText() }}
                         </button>
                     </div>

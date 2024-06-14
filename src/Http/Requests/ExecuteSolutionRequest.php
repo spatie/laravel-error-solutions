@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Spatie\ErrorSolutions\Contracts\RunnableSolution;
 use Spatie\ErrorSolutions\Contracts\Solution;
 use Spatie\ErrorSolutions\Contracts\SolutionProviderRepository;
+use Spatie\ErrorSolutions\Solutions\Laravel\GenerateAppKeySolution;
 
 class ExecuteSolutionRequest extends FormRequest
 {

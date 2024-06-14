@@ -2,8 +2,6 @@
 
 namespace Spatie\LaravelErrorSolutions\Support;
 
-use Spatie\LaravelErrorSolutions\Exceptions\CannotExecuteSolutionForNonLocalIp;
-
 class RunnableSolutionsGuard
 {
     public static function check(): bool
@@ -12,14 +10,18 @@ class RunnableSolutionsGuard
             return false;
         }
 
-        if (config('error-solutions.enable_runnable_solutions')) {
-            return true;
+        if (! config('error-solutions.enable_runnable_solutions')) {
+            return false;
         }
 
-        return config('app.debug');
+        if (! self::isLocalRequest()) {
+            return false;
+        }
+
+        return true;
     }
 
-    public function ensureLocalRequest(): self
+    protected static function isLocalRequest(): bool
     {
         if (! app()->environment('local') && ! app()->environment('development')) {
             return false;
@@ -32,9 +34,9 @@ class RunnableSolutionsGuard
         );
 
         if ($ipIsPublic) {
-            throw CannotExecuteSolutionForNonLocalIp::make();
+            return false;
         }
 
-        return $this;
+        return true;
     }
 }
