@@ -20,6 +20,10 @@ class GetSolutionsForLatestThrowableAction
     {
         $throwable = SpatieRenderer::$latestThrowable;
 
+        if (! $throwable) {
+            return [];
+        }
+
         return $this->solutionProviderRepository->getSolutionsForThrowable($throwable);
     }
 }
