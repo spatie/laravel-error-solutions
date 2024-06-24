@@ -39,7 +39,7 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
             return new SolutionProviderRepository($solutionProviders);
         });
 
-        app()->bind(RunnableSolutionsGuard::class, fn() => new RunnableSolutionsGuard());
+        app()->bind(RunnableSolutionsGuard::class, fn () => new RunnableSolutionsGuard());
 
         app()->bind(Renderer::class, function () {
             $errorRenderer = new HtmlErrorRenderer(

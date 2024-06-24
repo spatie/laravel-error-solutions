@@ -1,8 +1,8 @@
 <?php
 
+use Spatie\ErrorSolutions\Solutions\Laravel\RunMigrationsSolution;
 use Spatie\LaravelErrorSolutions\Actions\GetSolutionsForLatestThrowableAction;
 use Spatie\LaravelErrorSolutions\SpatieRenderer;
-use Spatie\ErrorSolutions\Solutions\Laravel\RunMigrationsSolution;
 
 it('can get the solutions for the latest throwable', function () {
     SpatieRenderer::$latestThrowable = $this->getThrowable();
@@ -21,4 +21,3 @@ it('will not crash when no throwable is set', function () {
 
     expect($solutions)->toHaveCount(0);
 });
-

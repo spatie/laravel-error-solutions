@@ -3,7 +3,6 @@
 namespace Spatie\LaravelErrorSolutions\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\LaravelErrorSolutions\LaravelErrorSolutionsServiceProvider;
@@ -32,7 +31,7 @@ class TestCase extends Orchestra
         config()->set('database.default', 'mysql');
     }
 
-    function getThrowable(): Throwable
+    public function getThrowable(): Throwable
     {
         try {
             User::all();
