@@ -13,9 +13,10 @@ class ExecuteSolutionController
 
     public function __invoke(
         ExecuteSolutionRequest $request,
-        SolutionProviderRepository $solutionProviderRepository
+        SolutionProviderRepository $solutionProviderRepository,
+        RunnableSolutionsGuard $runnableSolutionsGuard,
     ) {
-        abort_unless(RunnableSolutionsGuard::check(), 400);
+        abort_unless($runnableSolutionsGuard->check(), 400);
 
         $solution = $request->getRunnableSolution();
 

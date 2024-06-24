@@ -4,7 +4,7 @@ namespace Spatie\LaravelErrorSolutions\Support;
 
 class RunnableSolutionsGuard
 {
-    public static function check(): bool
+    public function check(): bool
     {
         if (! config('app.debug')) {
             return false;
@@ -14,14 +14,14 @@ class RunnableSolutionsGuard
             return false;
         }
 
-        if (! self::isLocalRequest()) {
+        if (! $this->isLocalRequest()) {
             return false;
         }
 
         return true;
     }
 
-    protected static function isLocalRequest(): bool
+    protected function isLocalRequest(): bool
     {
         if (! app()->environment('local') && ! app()->environment('development')) {
             return false;

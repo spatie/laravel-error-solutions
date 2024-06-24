@@ -3,8 +3,11 @@
 namespace Spatie\LaravelErrorSolutions\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\LaravelErrorSolutions\LaravelErrorSolutionsServiceProvider;
+use Throwable;
 
 class TestCase extends Orchestra
 {
@@ -26,11 +29,15 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        config()->set('database.default', 'mysql');
+    }
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-error-solutions_table.php.stub';
-        $migration->up();
-        */
+    function getThrowable(): Throwable
+    {
+        try {
+            User::all();
+        } catch (Throwable $throwable) {
+            return $throwable;
+        }
     }
 }

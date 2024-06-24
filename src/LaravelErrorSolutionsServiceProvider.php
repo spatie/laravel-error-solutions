@@ -12,6 +12,7 @@ use Spatie\ErrorSolutions\Contracts\SolutionProviderRepository as SolutionProvid
 use Spatie\ErrorSolutions\DiscoverSolutionProviders;
 use Spatie\ErrorSolutions\SolutionProviderRepository;
 use Spatie\LaravelErrorSolutions\Http\Controllers\ExecuteSolutionController;
+use Spatie\LaravelErrorSolutions\Support\RunnableSolutionsGuard;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer;
@@ -37,6 +38,8 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
 
             return new SolutionProviderRepository($solutionProviders);
         });
+
+        app()->bind(RunnableSolutionsGuard::class, fn() => new RunnableSolutionsGuard());
 
         app()->bind(Renderer::class, function () {
             $errorRenderer = new HtmlErrorRenderer(
