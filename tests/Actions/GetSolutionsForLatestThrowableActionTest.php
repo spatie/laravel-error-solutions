@@ -16,8 +16,7 @@ it('can get the solutions for the latest throwable', function () {
     expect($solution)->toBeInstanceOf(RunMigrationsSolution::class);
 });
 
-it('will not crash when not throwable is set', function () {
-
+it('will not crash when no throwable is set', function () {
     $solutions = app(GetSolutionsForLatestThrowableAction::class)->execute();
 
     expect($solutions)->toHaveCount(0);
