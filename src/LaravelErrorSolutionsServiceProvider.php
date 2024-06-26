@@ -23,8 +23,11 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('error-solutions')
-            ->hasConfigFile()
-            ->hasViews();
+            ->hasConfigFile();
+
+        if ($this->canIncludeViews()) {
+            $package->hasViews();
+        }
     }
 
     public function bootingPackage()
@@ -39,7 +42,7 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
             return new SolutionProviderRepository($solutionProviders);
         });
 
-        app()->bind(RunnableSolutionsGuard::class, fn () => new RunnableSolutionsGuard());
+        app()->bind(RunnableSolutionsGuard::class, fn() => new RunnableSolutionsGuard());
 
         app()->bind(Renderer::class, function () {
             $errorRenderer = new HtmlErrorRenderer(
@@ -55,6 +58,15 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
             );
         });
 
-        View::prependNamespace('laravel-exceptions-renderer', [__DIR__.'/../resources/views']);
+
+        if ($this->canIncludeViews()) {
+            View::prependNamespace('laravel-exceptions-renderer', [__DIR__ . '/../resources/views']);
+        }
+    }
+
+    protected function canIncludeViews(): bool
+    {
+        // Otherwise php artisan optimize may crash
+        return config('app.debug') === true;
     }
 }
