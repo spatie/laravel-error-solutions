@@ -4,6 +4,10 @@ use Spatie\LaravelErrorSolutions\Actions\GetSolutionsForLatestThrowableAction;
 use Spatie\LaravelErrorSolutions\SpatieRenderer;
 use Spatie\ErrorSolutions\Solutions\Laravel\RunMigrationsSolution;
 
+beforeEach(function() {
+    SpatieRenderer::$latestThrowable = null;
+});
+
 it('can get the solutions for the latest throwable', function () {
     SpatieRenderer::$latestThrowable = $this->getThrowable();
 

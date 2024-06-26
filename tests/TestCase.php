@@ -4,7 +4,10 @@ namespace Spatie\LaravelErrorSolutions\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\LaravelErrorSolutions\LaravelErrorSolutionsServiceProvider;
 use Throwable;
@@ -30,12 +33,20 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'mysql');
+
+        Schema::dropAllTables();
+
+        Schema::create('users', function(Blueprint $table) {
+            $table->id();
+            $table->string('name');
+        });
     }
 
     function getThrowable(): Throwable
     {
         try {
-            User::all();
+            User::unguard();
+            User::create(['non_existing_field' => 'value']);
         } catch (Throwable $throwable) {
             return $throwable;
         }
