@@ -3,10 +3,8 @@
 namespace Spatie\LaravelErrorSolutions\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\LaravelErrorSolutions\LaravelErrorSolutionsServiceProvider;
@@ -36,13 +34,13 @@ class TestCase extends Orchestra
 
         Schema::dropAllTables();
 
-        Schema::create('users', function(Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
         });
     }
 
-    function getThrowable(): Throwable
+    public function getThrowable(): Throwable
     {
         try {
             User::unguard();
