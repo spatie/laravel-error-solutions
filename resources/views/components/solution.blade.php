@@ -14,7 +14,6 @@
             <h3>Read more</h3>
             <ul>
                 @foreach($solution->getDocumentationLinks() as $label => $url)
-
                     <li><a href="{{ $url }}">{{ $label }}</a></li>
                 @endforeach
             </ul>
