@@ -2,7 +2,4 @@
 
 namespace Spatie\LaravelErrorSolutions\Tests\Http;
 
-class ExecutionSolutionControllerTest
-{
-
-}
+class ExecutionSolutionControllerTest {}

@@ -4,7 +4,7 @@ use Spatie\ErrorSolutions\Solutions\Laravel\RunMigrationsSolution;
 use Spatie\LaravelErrorSolutions\Actions\GetSolutionsForLatestThrowableAction;
 use Spatie\LaravelErrorSolutions\SpatieRenderer;
 
-beforeEach(function() {
+beforeEach(function () {
     SpatieRenderer::$latestThrowable = null;
 });
 
