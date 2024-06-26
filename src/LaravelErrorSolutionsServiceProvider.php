@@ -42,7 +42,7 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
             return new SolutionProviderRepository($solutionProviders);
         });
 
-        app()->bind(RunnableSolutionsGuard::class, fn() => new RunnableSolutionsGuard());
+        app()->bind(RunnableSolutionsGuard::class, fn () => new RunnableSolutionsGuard());
 
         app()->bind(Renderer::class, function () {
             $errorRenderer = new HtmlErrorRenderer(
@@ -58,9 +58,8 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
             );
         });
 
-
         if ($this->canIncludeViews()) {
-            View::prependNamespace('laravel-exceptions-renderer', [__DIR__ . '/../resources/views']);
+            View::prependNamespace('laravel-exceptions-renderer', [__DIR__.'/../resources/views']);
         }
     }
 
