@@ -20,6 +20,12 @@
             </ul>
         @endif
 
+        {{--
+        @if($solution->isAiSolution())
+            This solution is provided by our AI. It might not be 100% accurate.
+        @endif
+        --}}
+
         @if(config('error-solutions.enable_runnable_solutions'))
             @if($solution instanceof \Spatie\ErrorSolutions\Contracts\RunnableSolution)
                 <div x-data="{
