@@ -3,7 +3,6 @@
 @endphp
 
 @if(count($solutions))
-
     <h2>We found a solution</h2>
 
     @foreach($solutions as $solution)
