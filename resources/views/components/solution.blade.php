@@ -3,67 +3,171 @@
 @endphp
 
 @if(count($solutions))
-    <h2>We found a solution</h2>
+    <style>
+        .solution {
+            margin: 1.5rem -1.5rem -1.5rem;
+            padding: 1.5rem;
+            border-radius: 0 0 8px 8px;
+            background-color: #d6eed1;
+        }
 
-    @foreach($solutions as $solution)
-        <h3>{{ $solution->getSolutionTitle() }}</h3>
-        <div>{{ $solution->getSolutionDescription() }}</div>
+        @media (min-width: 640px) {
+            .solution {
+                margin: 3rem -3rem -3rem;
+                padding: 3rem;
+            }
+        }
 
-        @if(count($solution->getDocumentationLinks()))
-            <h3>Read more</h3>
-            <ul>
-                @foreach($solution->getDocumentationLinks() as $label => $url)
-                    <li><a href="{{ $url }}">{{ $label }}</a></li>
-                @endforeach
-            </ul>
-        @endif
+        .solution h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
 
-        @if($solution instanceof \Spatie\ErrorSolutions\Solutions\OpenAi\OpenAiSolution)
-            This solution is provided by our AI. It might not be 100% accurate.
-        @endif
+        .solution h2 + p {
+            font-size: 1.25rem;
+        }
 
-        @if(config('error-solutions.enable_runnable_solutions'))
-            @if($solution instanceof \Spatie\ErrorSolutions\Contracts\RunnableSolution)
-                <div x-data="{
-                    solutionExecuted: false,
-                    submitForm() {
-                        this.solutionExecuted = true;
+        .solution h3 {
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+            font-weight: bold;
+            font-size: 0.85rem;
+            letter-spacing: 0.015em;
+        }
 
-                        fetch('{{ route('execute-laravel-error-solution') }}', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            },
-                            body: JSON.stringify({!! Js::from([
-                                 'solution' => $solution::class
-                             ]) !!})
-                        });
-                    }
-                }">
-                    <div>
-                        {{ $solution->getSolutionActionDescription() }}
-                    </div>
+        .solution li {
+            display: flex;
+            align-items: center;
+        }
 
-                    <div x-show="! solutionExecuted">
-                        <button @click="submitForm()">
-                            {{ $solution->getRunButtonText() }}
-                        </button>
-                    </div>
+        .solution li a:not(:has(svg)) {
+            text-decoration: underline;
+        }
 
-                    <div x-show="solutionExecuted">
-                        The solution was executed...
+        .solution li svg {
+            height: 1.2em;
+            padding-left: 0.33ch;
+        }
 
-                        <div @click="location.reload()">
-                            Refresh page
-                        </div>
-                    </div>
-                </div>
+        .solution hr {
+            margin: 3.5rem 0 2.5rem;
+            border-top: 2px solid #b7d2b1;
+        }
+
+        .execute-solution {
+            margin-top: 3rem;
+        }
+
+        .execute-solution form {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .execute-solution button {
+            display: flex;
+            align-items: center;
+            gap: 1ch;
+            font-size: 1.125rem;
+            font-weight: 500;
+            background-color: #b7d2b1;
+            padding: 1rem 1.5rem;
+            border-radius: 100px;
+            transition: background-color 0.15s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .execute-solution button:hover {
+            background-color: #b0c8aa;
+        }
+
+        .execute-solution button svg {
+            height: 1.2em;
+        }
+
+        .ai-solution {
+            margin-top: 3rem;
+            opacity: 0.8;
+            font-size: 0.875rem;
+        }
+    </style>
+    <div class="solution">
+        @foreach($solutions as $solution)
+            <h2>{{ $solution->getSolutionTitle() }}{{ str_ends_with($solution->getSolutionTitle(), '.') ? '' : '.' }}</h2>
+            <p>{{ $solution->getSolutionDescription() }}</p>
+
+            @if(count($solution->getDocumentationLinks()))
+                <h3>Read more</h3>
+                <ul>
+                    @foreach($solution->getDocumentationLinks() as $label => $url)
+                        <li>
+                            <a href="{{ $url }}">{{ $label }}</a>
+                            <a href="{{ $url }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             @endif
-        @endif
-    @endforeach
 
-    <div>
-        Solution provided by <a href="https://flareapp.io">Flare</a>
+            @if(config('error-solutions.enable_runnable_solutions'))
+                @if($solution instanceof \Spatie\ErrorSolutions\Contracts\RunnableSolution)
+                    <div
+                        class="execute-solution"
+                        x-data="{
+                            solutionExecuted: false,
+                            submitForm() {
+                                this.solutionExecuted = true;
+
+                                fetch('{{ route('execute-laravel-error-solution') }}', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    body: JSON.stringify({!! Js::from([
+                                         'solution' => $solution::class
+                                     ]) !!})
+                                });
+                            }
+                        }"
+                    >
+                        <form x-show="! solutionExecuted" @submit.prevent="submitForm()">
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008Z" />
+                                </svg>
+                                {{ $solution->getRunButtonText() }}
+                            </button>
+                            <p>{{ $solution->getSolutionActionDescription() }}</p>
+                        </form>
+
+                        <form x-show="solutionExecuted" @submit.prevent="location.reload()">
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                </svg>
+                                Refresh page
+                            </button>
+                            <p>The solution was executed.</p>
+                        </form>
+                    </div>
+                @endif
+            @endif
+
+            @if($solution instanceof \Spatie\ErrorSolutions\Solutions\OpenAi\OpenAiSolution)
+                <p class="ai-solution">This solution is provided by AI. It might not be 100% accurate.</p>
+            @endif
+
+            @if(!$loop->last)
+               <hr>
+            @endif
+        @endforeach
+        {{--<div>
+            Solution provided by <a href="https://flareapp.io">Flare</a>
+        </div>--}}
     </div>
 @endif
