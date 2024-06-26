@@ -25,3 +25,11 @@ it('will not crash when no throwable is set', function () {
 
     expect($solutions)->toHaveCount(0);
 });
+
+it('will not crash when an unknown throwable is set', function () {
+    SpatieRenderer::$latestThrowable = (new Exception('unknown throwable'));
+
+    $solutions = app(GetSolutionsForLatestThrowableAction::class)->execute();
+
+    expect($solutions)->toHaveCount(0);
+});

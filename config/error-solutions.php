@@ -14,6 +14,11 @@ return [
      */
     'enable_runnable_solutions' => true,
 
+    /*
+     * When a key is set, we'll send your exceptions to Open AI to generate a solution
+     */
+    'open_ai_key' => env('ERROR_SOLUTIONS_OPEN_AI_KEY'),
+
     /**
      * This class is responsible for determining if a solution is runnable.
      *
