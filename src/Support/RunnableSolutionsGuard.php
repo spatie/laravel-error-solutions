@@ -6,6 +6,7 @@ class RunnableSolutionsGuard
 {
     public function check(): bool
     {
+
         if (! config('app.debug')) {
             return false;
         }
@@ -23,7 +24,7 @@ class RunnableSolutionsGuard
 
     protected function isLocalRequest(): bool
     {
-        if (! app()->environment('local') && ! app()->environment('development')) {
+        if (! in_array(app()->environment(), $this->allowedEnvironments())) {
             return false;
         }
 
@@ -38,5 +39,14 @@ class RunnableSolutionsGuard
         }
 
         return true;
+    }
+
+    protected function allowedEnvironments(): array
+    {
+        return [
+            'local',
+            'development',
+            'testing',
+        ];
     }
 }
