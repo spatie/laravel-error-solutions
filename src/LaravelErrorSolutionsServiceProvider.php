@@ -44,6 +44,7 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
 
         app()->bind(RunnableSolutionsGuard::class, fn () => new RunnableSolutionsGuard());
 
+
         app()->bind(Renderer::class, function () {
             $errorRenderer = new HtmlErrorRenderer(
                 $this->app['config']->get('app.debug'),
@@ -59,13 +60,16 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
         });
 
         if ($this->canIncludeViews()) {
-            View::prependNamespace('laravel-exceptions-renderer', [__DIR__.'/../resources/views']);
+            View::prependNamespace('laravel-exceptions-renderer',
+                [
+                    __DIR__.'/../resources/views',
+                ]);
         }
     }
 
     protected function canIncludeViews(): bool
     {
-        // Otherwise php artisan optimize may crash
+        return true;
         return config('app.debug') === true;
     }
 }

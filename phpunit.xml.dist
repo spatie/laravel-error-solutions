@@ -26,6 +26,7 @@
         <env name="DB_DATABASE" value="laravel_error_solutions"/>
         <env name="DB_HOST" value="127.0.0.1"/>
         <env name="DB_PORT" value="3306"/>
+        <env name="APP_DEBUG" value="true"/>
     </php>
     <logging>
         <junit outputFile="build/report.junit.xml"/>

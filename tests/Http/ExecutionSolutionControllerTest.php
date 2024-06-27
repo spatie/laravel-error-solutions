@@ -9,8 +9,6 @@ beforeEach(function () {
 });
 
 it('can execute a solution', function () {
-
-
     $this
         ->post(route('execute-laravel-error-solution'), [
             'solution' => GenerateAppKeySolution::class,
