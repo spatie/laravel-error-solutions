@@ -4,6 +4,7 @@ namespace Spatie\LaravelErrorSolutions\Actions;
 
 use Spatie\ErrorSolutions\Contracts\SolutionProviderRepository;
 use Spatie\LaravelErrorSolutions\SpatieRenderer;
+use Throwable;
 
 class GetSolutionsForLatestThrowableAction
 {
@@ -22,6 +23,14 @@ class GetSolutionsForLatestThrowableAction
             return [];
         }
 
-        return $this->solutionProviderRepository->getSolutionsForThrowable($throwable);
+        $solutions = [];
+
+        try {
+            $solutions = $this->solutionProviderRepository->getSolutionsForThrowable($throwable);
+        } catch (Throwable $exception) {
+
+        }
+
+        return $solutions;
     }
 }
