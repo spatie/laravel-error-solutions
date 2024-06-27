@@ -44,7 +44,6 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
 
         app()->bind(RunnableSolutionsGuard::class, fn () => new RunnableSolutionsGuard());
 
-
         app()->bind(Renderer::class, function () {
             $errorRenderer = new HtmlErrorRenderer(
                 $this->app['config']->get('app.debug'),
@@ -70,6 +69,7 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
     protected function canIncludeViews(): bool
     {
         return true;
+
         return config('app.debug') === true;
     }
 }
