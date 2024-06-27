@@ -103,8 +103,10 @@
                         <li>
                             <a href="{{ $url }}">{{ $label }}</a>
                             <a href="{{ $url }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
                                 </svg>
                             </a>
                         </li>
@@ -136,9 +138,12 @@
                     >
                         <form x-show="! solutionExecuted" @submit.prevent="submitForm()">
                             <button type="submit">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008Z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M4.867 19.125h.008v.008h-.008v-.008Z"/>
                                 </svg>
                                 {{ $solution->getRunButtonText() }}
                             </button>
@@ -147,8 +152,10 @@
 
                         <form x-show="solutionExecuted" @submit.prevent="location.reload()">
                             <button type="submit">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
                                 </svg>
                                 Refresh page
                             </button>
@@ -162,12 +169,22 @@
                 <p class="ai-solution">This solution is provided by AI. It might not be 100% accurate.</p>
             @endif
 
+            <div>
+                @if(method_exists($solution, 'solutionProvidedByName'))
+                    @if(method_exists($solution, 'solutionsProvidedByLink'))
+                        Solution provided by <a
+                            href="{{ $solution->solutionsProvidedByLink() }}">{{ $solution->solutionProvidedByName() }}</a>
+                    @else
+                        Solution provided by {{ $solution->solutionProvidedByName() }}
+                    @endif
+                @else
+                    Solution provided by <a href="https://flareapp.io">Flare</a>
+                @endif
+            </div>
+
             @if(!$loop->last)
-               <hr>
+                <hr>
             @endif
         @endforeach
-        {{--<div>
-            Solution provided by <a href="https://flareapp.io">Flare</a>
-        </div>--}}
     </div>
-@endif
+
