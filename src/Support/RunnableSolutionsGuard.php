@@ -6,7 +6,6 @@ class RunnableSolutionsGuard
 {
     public function check(): bool
     {
-
         if (! config('app.debug')) {
             return false;
         }
