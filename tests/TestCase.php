@@ -5,7 +5,6 @@ namespace Spatie\LaravelErrorSolutions\Tests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Foundation\Providers\FoundationServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\LaravelErrorSolutions\LaravelErrorSolutionsServiceProvider;

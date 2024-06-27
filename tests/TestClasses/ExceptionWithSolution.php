@@ -16,7 +16,8 @@ class ExceptionWithSolution extends Exception implements ProvidesSolution
 
     public function getSolution(): Solution
     {
-        return new class implements Solution {
+        return new class implements Solution
+        {
             public function getSolutionTitle(): string
             {
                 return 'My custom solution';
