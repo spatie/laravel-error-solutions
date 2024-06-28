@@ -103,6 +103,10 @@ It will not send the request payload or any environment variables to avoid sendi
 
 ### Creating your own solutions
 
+There are two ways to add solutions to your exceptions: on the exception itself, or via a solution provider.
+
+#### On the exception itself
+
 The easiest way of adding a solution would to implement the `ProvidesSolution` interface on  your exception. 
 
 Here's an example:
@@ -146,6 +150,20 @@ class ExceptionWithSolution extends Exception implements ProvidesSolution
 
 Optionally, you could add the `solutionProvidedByName` and `solutionProvidedByLink` method on the solution.
 
+#### Using a solution provider
+
+If you want to add solutions to exceptions that you can't modify, you can use a solution provider. A solution provider is a class that implements the `ProvidesSolution` interface. It will determine if it can provide a solution for a given exception.
+
+Here's an example:
+
+```php
+```
+
+
+
+
+#### Adding "provided by" information to a solution
+
 ```php
 // in your solution class
 
@@ -159,6 +177,8 @@ public function solutionProvidedByLink(): string
     return 'https://flareapp.io';
 }
 ```
+
+
 
 ## Testing
 
