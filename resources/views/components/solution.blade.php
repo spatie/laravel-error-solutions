@@ -11,6 +11,10 @@
             background-color: #d6eed1;
         }
 
+        .dark .solution {
+            background-color: #60755b;
+        }
+
         @media (min-width: 640px) {
             .solution {
                 margin: 3rem -3rem -3rem;
@@ -69,6 +73,14 @@
 
         .execute-solution button:hover {
             background-color: #b0c8aa;
+        }
+
+        .dark .execute-solution button {
+            background-color: #424b40;
+        }
+
+        .dark .execute-solution button:hover {
+            background-color: #364233;
         }
 
         .execute-solution button svg {
