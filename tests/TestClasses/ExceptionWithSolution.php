@@ -4,14 +4,13 @@ namespace Spatie\LaravelErrorSolutions\Tests\TestClasses;
 
 use Exception;
 use Spatie\ErrorSolutions\Contracts\Solution;
-use Spatie\Ignition\Contracts\ProvidesSolution;
+use Spatie\ErrorSolutions\Contracts\ProvidesSolution;
 
 class ExceptionWithSolution extends Exception implements ProvidesSolution
 {
-    public function __construct()
+    public function __construct(string $message = '')
     {
-        parent::__construct(
-            'My custom exception');
+        parent::__construct($message ?? 'My custom exception');
     }
 
     public function getSolution(): Solution
@@ -30,7 +29,9 @@ class ExceptionWithSolution extends Exception implements ProvidesSolution
 
             public function getDocumentationLinks(): array
             {
-                return [];
+                return [
+                    'Spatie docs' => 'https://spatie.be/docs',
+                ];
             }
         };
     }

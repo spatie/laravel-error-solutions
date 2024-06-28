@@ -36,7 +36,7 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
             Route::post('__execute-laravel-error-solution', ExecuteSolutionController::class)->name('execute-laravel-error-solution');
         }
 
-        app()->bind(SolutionProviderRepositoryContract::class, function () {
+        app()->scoped(SolutionProviderRepositoryContract::class, function () {
             [$configuredSolutionProviders, $labels] = collect(config('error-solutions.solution_providers'))->partition(function(string $labelOrClassName) {
                 return class_exists($labelOrClassName);
             });
