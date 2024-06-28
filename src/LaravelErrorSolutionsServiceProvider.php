@@ -37,7 +37,13 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
         }
 
         app()->bind(SolutionProviderRepositoryContract::class, function () {
-            $solutionProviders = DiscoverSolutionProviders::for(['php', 'laravel']);
+            [$configuredSolutionProviders, $labels] = collect(config('error-solutions.solution_providers'))->partition(function(string $labelOrClassName) {
+                return class_exists($labelOrClassName);
+            });
+
+            $discoveredSolutionProviders = DiscoverSolutionProviders::for($labels->toArray());
+
+            $solutionProviders = array_merge($discoveredSolutionProviders, $configuredSolutionProviders->toArray());
 
             return new SolutionProviderRepository($solutionProviders);
         });

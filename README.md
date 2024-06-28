@@ -72,6 +72,14 @@ php artisan vendor:publish --tag="laravel-error-solutions-views"
 
 After the package installed, you'll see solutions on the error page. If you want to disable this, you can set the `enabled` key in the config file to `false`.
 
+### Runnable solutions
+
+Some solutions can be run automatically by clicking a button. This feature is only enabled in local development environments. 
+
+// INSERT IMAGE
+
+The package uses the `Spatie\LaravelErrorSolutions\Support\RunnableSolutionsGuard` class to determine if the app is running locally. To have more control over the behaviour, you can extend this class and override its methods. You must set the `runnable_solutions_guard` key in the config file to your custom class.
+
 ### Using AI to suggest solutions
 
 The package can send your exceptions to Open AI that will attempt to automatically suggest a solution. In many cases, the suggested solutions is quite useful, but keep in mind that the solution may not be 100% correct for your context.
@@ -92,6 +100,10 @@ These bits of info will be sent to Open AI:
 - other small bits of info of context surrounding your error
 
 It will not send the request payload or any environment variables to avoid sending sensitive data to OpenAI.
+
+### Creating your own solutions
+
+
 
 ## Testing
 
