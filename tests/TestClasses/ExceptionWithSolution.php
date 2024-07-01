@@ -3,8 +3,8 @@
 namespace Spatie\LaravelErrorSolutions\Tests\TestClasses;
 
 use Exception;
-use Spatie\ErrorSolutions\Contracts\Solution;
 use Spatie\ErrorSolutions\Contracts\ProvidesSolution;
+use Spatie\ErrorSolutions\Contracts\Solution;
 
 class ExceptionWithSolution extends Exception implements ProvidesSolution
 {
