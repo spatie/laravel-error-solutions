@@ -5,7 +5,8 @@ weight: 3
 
 The package can send your exceptions to Open AI that will attempt to automatically suggest a solution. In many cases, the suggested solutions is quite useful, but keep in mind that the solution may not be 100% correct for your context.
 
-// INSERT IMAGE
+![image](/docs/laravel-error-solutions/v1/images/ai-solution.png)
+
 
 To generate AI powered solutions, you must first install this optional dependency.
 

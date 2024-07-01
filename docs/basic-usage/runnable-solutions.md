@@ -5,7 +5,7 @@ weight: 2
 
 For some solutions, the package will display a button that will automatically run the solution. Here's how that looks when you forget to run `php artisan migrate`:
 
-INSERT IMAGE
+![image](/docs/laravel-error-solutions/v1/images/runnable-solution.png)
 
 If you don't want to use runnable solutions, you can disable them by setting the `enable_runnable_solutions` key to `false` in the config file.
 
