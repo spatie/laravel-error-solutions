@@ -7,12 +7,11 @@
 
 This package can display solutions on the Laravel error page. Here's how it looks:
 
-INSERT IMAGE
+![image](https://raw.githubusercontent.com/spatie/laravel-error-solutions/main/docs/images/solution.png)
 
-For some solutions, the package will display a button that will automatically run the solution. Here's how that looks when you forget to run `php artisan migrate`:
+For some solutions, the package will display a button that will automatically run the solution. Here's how that looks when you forget to set an `APP_KEY` in your `.env` file:
 
-INSERT IMAGE
-
+![image](https://raw.githubusercontent.com/spatie/laravel-error-solutions/main/docs/images/runnable-solution.png)
 
 ## Support us
 
