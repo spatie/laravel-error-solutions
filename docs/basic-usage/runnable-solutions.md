@@ -3,7 +3,7 @@ title: Runnable solutions
 weight: 2
 ---
 
-For some solutions, the package will display a button that will automatically run the solution. Here's how that looks when you forget to run `php artisan migrate`:
+For some solutions, the package will display a button that will automatically run the solution. Here's how that looks when you forget to set an app key:
 
 ![image](/docs/laravel-error-solutions/v1/images/runnable-solution.png)
 
