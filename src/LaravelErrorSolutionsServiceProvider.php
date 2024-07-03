@@ -74,8 +74,6 @@ class LaravelErrorSolutionsServiceProvider extends PackageServiceProvider
 
     protected function canIncludeViews(): bool
     {
-        return true;
-
         return config('app.debug') === true;
     }
 }
