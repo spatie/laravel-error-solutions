@@ -11,7 +11,7 @@ composer require spatie/laravel-error-solutions
 
 ## Publishing the config file
 
-Optionally, you can publish the `health` config file with this command.
+Optionally, you can publish the `error-solutions` config file with this command.
 
 ```bash
 php artisan vendor:publish --tag="error-solutions"
