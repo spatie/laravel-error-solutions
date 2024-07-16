@@ -32,7 +32,7 @@ composer require spatie/laravel-error-solutions
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-error-solutions-config"
+php artisan vendor:publish --tag="error-solutions-config"
 ```
 
 This is the contents of the published config file:
