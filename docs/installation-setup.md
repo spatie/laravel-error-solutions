@@ -59,3 +59,10 @@ return [
     'runnable_solutions_guard' => Spatie\LaravelErrorSolutions\Support\RunnableSolutionsGuard::class,
 ];
 ```
+## Publishing the views files
+
+Optionally, you can publish the views using
+
+```bash
+php artisan vendor:publish --tag="error-solutions-views"
+```
