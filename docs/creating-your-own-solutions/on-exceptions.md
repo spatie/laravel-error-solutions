@@ -60,7 +60,7 @@ class ExceptionWithSolution extends Exception implements ProvidesSolution
 
     public function getSolution(): Solution
     {
-        return YourSolution::class,
+        return new MySolution();
     }
 }
 ```
