@@ -64,7 +64,7 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-error-solutions-views"
+php artisan vendor:publish --tag="error-solutions-views"
 ```
 
 ## Usage
