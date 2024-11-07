@@ -21,6 +21,7 @@
     "require": {
         "php": "^8.2",
         "illuminate/contracts": "^11.13.0",
+        "spatie/backtrace": "^1.6",
         "spatie/error-solutions": "^1.0.4",
         "spatie/laravel-package-tools": "^1.16.4"
     },
