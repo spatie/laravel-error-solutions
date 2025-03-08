@@ -5,7 +5,13 @@ use Spatie\LaravelErrorSolutions\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
 
-function orchestraVersionEqualOrHigherThen(int $versionNumber)
+ensureEnvFileExists();
+
+function ensureEnvFileExists()
 {
-    return version_compare(InstalledVersions::getVersion('orchestra/testbench'), '10.0.0', '>=');
+    $envPath = version_compare(InstalledVersions::getVersion('orchestra/testbench'), '10.0.0', '>=')
+        ? '.env'
+        : 'vendor/orchestra/testbench-core/laravel/.env';
+
+    @touch($envPath);
 }

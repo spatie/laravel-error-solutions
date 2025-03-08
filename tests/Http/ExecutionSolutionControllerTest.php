@@ -3,12 +3,6 @@
 use Spatie\ErrorSolutions\Solutions\Laravel\GenerateAppKeySolution;
 
 beforeEach(function () {
-    $envPath = orchestraVersionEqualOrHigherThen('10')
-        ? '.env'
-        : 'vendor/orchestra/testbench-core/laravel/.env';
-
-    touch($envPath);
-
     config()->set('app.debug', true);
 });
 
