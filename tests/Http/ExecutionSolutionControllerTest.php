@@ -3,14 +3,18 @@
 use Spatie\ErrorSolutions\Solutions\Laravel\GenerateAppKeySolution;
 
 beforeEach(function () {
-    // needed in <L12
-    @mkdir(base_path('/vendor/orchestra/testbench-core/laravel'));
-    @touch(base_path('/vendor/orchestra/testbench-core/laravel/.env'));
+    $envPath = orchestraVersionEqualOrHigherThen('10')
+        ? '.env'
+        : 'vendor/orchestra/testbench-core/laravel/.env';
+
+    touch($envPath);
 
     config()->set('app.debug', true);
 });
 
 it('can execute a solution', function () {
+
+
     $this
         ->post(route('execute-laravel-error-solution'), [
             'solution' => GenerateAppKeySolution::class,
