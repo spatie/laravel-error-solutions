@@ -3,7 +3,8 @@
 use Spatie\ErrorSolutions\Solutions\Laravel\GenerateAppKeySolution;
 
 beforeEach(function () {
-    touch(base_path('/vendor/orchestra/testbench-core/laravel/.env'));
+    // needed in <L12
+    @touch(base_path('/vendor/orchestra/testbench-core/laravel/.env'));
 
     config()->set('app.debug', true);
 });
