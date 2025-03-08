@@ -1,6 +1,5 @@
 <?php
 
-use Composer\InstalledVersions;
 use Spatie\LaravelErrorSolutions\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
