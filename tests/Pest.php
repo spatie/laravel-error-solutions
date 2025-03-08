@@ -9,9 +9,6 @@ ensureEnvFileExists();
 
 function ensureEnvFileExists()
 {
-    $envPath = version_compare(InstalledVersions::getVersion('orchestra/testbench'), '10.0.0', '>=')
-        ? '.env'
-        : 'vendor/orchestra/testbench-core/laravel/.env';
-
-    @touch($envPath);
+    @touch('.env');
+    @touch('vendor/orchestra/testbench-core/laravel/.env');
 }
