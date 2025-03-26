@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-error-solutions` will be documented in this file.
 
+## 1.0.2 - 2025-03-26
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/spatie/laravel-error-solutions/pull/13
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/spatie/laravel-error-solutions/pull/14
+
+**Full Changelog**: https://github.com/spatie/laravel-error-solutions/compare/1.0.1...1.0.2
+
 ## 1.0.1 - 2024-11-07
 
 ### What's Changed
