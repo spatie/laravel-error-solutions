@@ -1,9 +1,19 @@
-# Display solutions on the Laravel error page
+<div align="left">
+    <a href="https://spatie.be/open-source?utm_source=github&utm_medium=banner&utm_campaign=laravel-error-solutions">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://spatie.be/packages/header/laravel-error-solutions/html/dark.webp">
+        <img alt="Logo for laravel-error-solutions" src=" https://spatie.be/packages/header/laravel-error-solutions/html/light.webp" height="190">
+      </picture>
+    </a>
+
+<h1> Display solutions on the Laravel error page</h1>
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-error-solutions.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-error-solutions)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-error-solutions/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/spatie/laravel-error-solutions/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-error-solutions/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/spatie/laravel-error-solutions/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-error-solutions.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-error-solutions)
+    
+</div>
 
 This package can display solutions on the Laravel error page. Here's how it looks:
 
