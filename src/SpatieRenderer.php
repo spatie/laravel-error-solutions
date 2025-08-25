@@ -17,10 +17,17 @@ class SpatieRenderer extends Renderer
             $this->htmlErrorRenderer->render($throwable),
         );
 
+        $exception = new Exception($flattenException, $request, $this->listener, $this->basePath);
+
+        $exceptionAsMarkdown = $this->viewFactory->make('laravel-exceptions-renderer::markdown', [
+            'exception' => $exception,
+        ])->render();
+
         self::$latestThrowable = $throwable;
 
         return $this->viewFactory->make('laravel-exceptions-renderer::show', [
-            'exception' => new Exception($flattenException, $request, $this->listener, $this->basePath),
+            'exception' => $exception,
+            'exceptionAsMarkdown' => $exceptionAsMarkdown,
         ])->render();
     }
 }
