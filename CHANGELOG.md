@@ -2,6 +2,22 @@
 
 All notable changes to `laravel-error-solutions` will be documented in this file.
 
+## 1.0.4 - 2025-10-11
+
+### What's Changed
+
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/spatie/laravel-error-solutions/pull/21
+* Update spatie/error-solutions requirement from ^1.0.4 to ^2.0.1 by @dependabot[bot] in https://github.com/spatie/laravel-error-solutions/pull/19
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/spatie/laravel-error-solutions/pull/18
+* Update issue template by @AlexVanderbist in https://github.com/spatie/laravel-error-solutions/pull/23
+* Update to support new Laravel 12.29 error page by @imliam in https://github.com/spatie/laravel-error-solutions/pull/25
+
+### New Contributors
+
+* @AlexVanderbist made their first contribution in https://github.com/spatie/laravel-error-solutions/pull/23
+
+**Full Changelog**: https://github.com/spatie/laravel-error-solutions/compare/1.0.3...1.0.4
+
 ## 1.0.3 - 2025-08-25
 
 ### What's Changed
