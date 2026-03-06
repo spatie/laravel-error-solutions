@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-error-solutions` will be documented in this file.
 
+## 1.1.0 - 2026-03-06
+
+### What's Changed
+
+- Laravel 13.x Compatibility
+
 ## 1.0.4 - 2025-10-11
 
 ### What's Changed
