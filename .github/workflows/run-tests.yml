@@ -4,22 +4,27 @@ on:
   push:
     paths:
       - '**.php'
-      - '.github/workflows/run-tests.yml'
-      - 'phpunit.xml.dist'
-      - 'composer.json'
-      - 'composer.lock'
+      - .github/workflows/run-tests.yml
+      - phpunit.xml.dist
+      - composer.json
+      - composer.lock
 
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+
     timeout-minutes: 5
+
     strategy:
       fail-fast: true
       matrix:
         os: [ubuntu-latest]
         php: [8.4, 8.3, 8.2]
-        laravel: [12.*, 11.*]
+        laravel: ['11.*', '12.*', '13.*']
         stability: [prefer-stable]
+        exclude:
+          - laravel: 13.*
+            php: 8.2
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -65,4 +70,3 @@ jobs:
           DB_USERNAME: user
           DB_PASSWORD: secret
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
-
