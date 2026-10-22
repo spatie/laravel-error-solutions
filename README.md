@@ -25,7 +25,7 @@ For some solutions, the package will display a button that will automatically ru
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-error-solutions.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-error-solutions)
+[<img src="https://spatie.be/github-ad-image/laravel-error-solutions.jpg" width="419px" />](https://spatie.be/github-ad-click/laravel-error-solutions)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
