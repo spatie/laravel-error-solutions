@@ -16,15 +16,15 @@ jobs:
     timeout-minutes: 5
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: [8.4, 8.3, 8.2]
-        laravel: ['11.*', '12.*', '13.*']
+        php: ['8.6', '8.5', '8.4', '8.3', '8.2']
+        laravel: ['12.*', '13.*']
         stability: [prefer-stable]
         exclude:
           - laravel: 13.*
-            php: 8.2
+            php: '8.2'
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
