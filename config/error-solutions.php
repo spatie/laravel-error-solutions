@@ -1,5 +1,7 @@
 <?php
 
+use Spatie\LaravelErrorSolutions\Support\RunnableSolutionsGuard;
+
 return [
     /**
      * Display solutions on the error page
@@ -36,5 +38,5 @@ return [
      *
      * In most cases, you can use the default implementation.
      */
-    'runnable_solutions_guard' => Spatie\LaravelErrorSolutions\Support\RunnableSolutionsGuard::class,
+    'runnable_solutions_guard' => RunnableSolutionsGuard::class,
 ];
