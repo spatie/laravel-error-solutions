@@ -2,6 +2,8 @@
 
 namespace Spatie\LaravelErrorSolutions\Actions;
 
+use Spatie\ErrorSolutions\Contracts\RunnableSolution;
+use Spatie\ErrorSolutions\Contracts\Solution;
 use Spatie\ErrorSolutions\Contracts\SolutionProviderRepository;
 use Spatie\LaravelErrorSolutions\SpatieRenderer;
 use Throwable;
@@ -13,7 +15,7 @@ class GetSolutionsForLatestThrowableAction
     ) {}
 
     /**
-     * @return array<\Spatie\ErrorSolutions\Contracts\Solution|\Spatie\ErrorSolutions\Contracts\RunnableSolution>
+     * @return array<Solution|RunnableSolution>
      */
     public function execute(): array
     {
